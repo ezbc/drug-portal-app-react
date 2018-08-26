@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: drug-app:1.0.8
+    container_name: drug-portal-proxy
+    hostname: app
+    ports:
+      - 8091:8080
+      - 3002:3000
+    volumes:
+      - ./:/app
+    entrypoint: /bin/bash -c "yarn dev && tail /dev/null"
