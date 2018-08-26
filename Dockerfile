@@ -7,5 +7,5 @@ FROM gcr.io/google-appengine/nodejs
 ADD . /app
 WORKDIR /app
 
-RUN npm install
+RUN yarn install
 RUN ls ./
