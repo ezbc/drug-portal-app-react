@@ -2,21 +2,31 @@ import {
   Paper,
   Card,
   CardContent,
-  CardHeader
+  CardHeader,
+  Typography
 } from '@material-ui/core'
 import React from 'react';
 import AnnotatedText from './AnnotatedText/AnnotatedText';
+import PlainText from './PlainText/PlainText';
 
 function createBlocks(annotations) {
-  return annotations.map(function(block, index) {
+  return annotations.map(function(block, i) {
     if (block.label) {
-      return (<AnnotatedText
+      return (
+        <AnnotatedText
           label={block.label}
           text={block.text}
-          annotationText={block.class}
-        />)
+          highlightName={block.class}
+          key={i}
+        />
+      )
     } else {
-      return (<span>{ block.text }</span>)
+      return (
+        <PlainText
+          text={block.text} 
+          key={i}
+        />
+      )
     }
   })
 }

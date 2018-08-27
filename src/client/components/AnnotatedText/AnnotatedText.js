@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Popover from '@material-ui/core/Popover';
-import { Paper, Card, CardContent } from '@material-ui/core';
+import { ButtonBase, Paper, Card, CardContent, Tooltip } from '@material-ui/core';
 import PopoverAnnotation from '../PopoverAnnotation/PopoverAnnotation'
+import './AnnotatedText.css';
 
 const styles = theme => ({
   typography: {
     margin: theme.spacing.unit * 2,
   },
 });
+
+
 
 class AnnotatedText extends React.Component {
   state = {
@@ -39,12 +42,17 @@ class AnnotatedText extends React.Component {
     const { label } = this.props;
     const { text } = this.props;
     const { annotationText } = this.props;
+    const { key } = this.props;
 
     return (
-      <span
-        onClick={this.handleClick}
-      >
-        {text}
+      <span>
+        <span
+          onClick={this.handleClick}
+          key={this.props.key}
+          className={"highlight-" + this.props.highlightName }
+        >
+          {text}
+        </span>
         <Popover
           className="PopoverAnnotation"
           id="simple-popper"
@@ -59,9 +67,11 @@ class AnnotatedText extends React.Component {
             vertical: 'bottom',
             horizontal: 'center',
           }}
+          key={this.props.key}
         >
           <PopoverAnnotation
             title={label}
+            key={this.props.key}
           >
             { annotationText }
           </PopoverAnnotation>
