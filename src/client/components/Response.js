@@ -7,23 +7,29 @@ import {
 import React from 'react';
 import AnnotatedText from './AnnotatedText/AnnotatedText';
 
-const label = 'Label'
-const text = 'text'
-const annotationText = 'anno text'
+function createBlocks(annotations) {
+  return annotations.map(function(block, index) {
+    if (block.label) {
+      return (<AnnotatedText
+          label={block.label}
+          text={block.text}
+          annotationText={block.class}
+        />)
+    } else {
+      return (<span>{ block.text }</span>)
+    }
+  })
+}
 
 const Response = (props) => (
   <div>
-    { props.response && 
+    { props.annotations && 
       <Card>
         <CardHeader
           title='Results'
         />
         <CardContent>
-          <AnnotatedText
-            label={label}
-            text={text}
-            annotationText={annotationText}
-          />
+          { createBlocks(props.annotations) }
         </CardContent>
       </Card>
     }

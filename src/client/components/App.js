@@ -55,8 +55,36 @@ export default withStyles(styles)(
 
     state = {
       text: '',
-      response: null
+      response: {
+        "annotations": [
+            {
+                "class": null,
+                "label": null,
+                "text": "Beta-adrenergic agonist medicines "
+            },
+            {
+                "class": "factor",
+                "label": "Factor",
+                "text": "may"
+            },
+            {
+                "class": null,
+                "label": null,
+                "text": " produce "
+            },
+            {
+                "class": "severity",
+                "label": "Severity",
+                "text": "significant"
+            },
+            {
+                "class": null,
+                "label": null,
+                "text": " "
+            }
+        ]
     }
+  }
 
     handleFormChange = ({target: {name, value}}) => {
       this.setState((prevState) => ({
@@ -85,7 +113,7 @@ export default withStyles(styles)(
               handleFormSubmit={this.handleFormSubmit}
             />
           <Response
-            response={this.state.response} 
+            annotations={this.state.response.annotations} 
           >
           </Response>
         </MuiThemeProvider>

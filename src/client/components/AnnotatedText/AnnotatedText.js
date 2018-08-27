@@ -41,12 +41,10 @@ class AnnotatedText extends React.Component {
     const { annotationText } = this.props;
 
     return (
-      <div>
-        <span
-          onClick={this.handleClick}
-        >
-          {text}
-        </span>
+      <span
+        onClick={this.handleClick}
+      >
+        {text}
         <Popover
           className="PopoverAnnotation"
           id="simple-popper"
@@ -69,7 +67,7 @@ class AnnotatedText extends React.Component {
           </PopoverAnnotation>
           
         </Popover>
-      </div>
+      </span>
     );
   }
 }
