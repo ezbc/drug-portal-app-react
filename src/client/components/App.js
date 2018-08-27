@@ -69,10 +69,7 @@ export default withStyles(styles)(
 
       axios.post("/api/evalText", {
           text: this.state.text
-        },
-        {
-          headers: {"Content-Type": "application/json"}
-      })
+        })
       .then(res => this.setState({ response: res.data.annotations[0].text }));
     }
 
