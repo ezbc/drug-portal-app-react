@@ -5,7 +5,7 @@ import {
   CardHeader
 } from '@material-ui/core'
 import React from 'react';
-import AnnotatedText from './AnnotatedText';
+import AnnotatedText from './AnnotatedText/AnnotatedText';
 
 const label = 'Label'
 const text = 'text'

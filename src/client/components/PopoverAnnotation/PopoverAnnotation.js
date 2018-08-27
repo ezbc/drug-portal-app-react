@@ -11,14 +11,17 @@ import {
 } from '@material-ui/core';
 
 const PopoverAnnotation = (props) => (
-  <Card>
-    <CardHeader
-      title={props.title}
-    />
-    <CardContent>
-      Popover text
-    </CardContent>
-  </Card>
+  <div
+  >
+    <Card>
+      <CardHeader
+        title={props.title}
+      />
+      <CardContent>
+        Popover text
+      </CardContent>
+    </Card>
+  </div>
 )
 
 PopoverAnnotation.defaultProps = {

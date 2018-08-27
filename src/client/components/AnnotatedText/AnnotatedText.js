@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Popover from '@material-ui/core/Popover';
 import { Paper, Card, CardContent } from '@material-ui/core';
-import PopoverAnnotation from './PopoverAnnotation'
+import PopoverAnnotation from '../PopoverAnnotation/PopoverAnnotation'
 
 const styles = theme => ({
   typography: {
@@ -48,6 +48,7 @@ class AnnotatedText extends React.Component {
           {text}
         </span>
         <Popover
+          className="PopoverAnnotation"
           id="simple-popper"
           open={open}
           anchorEl={anchorEl}
