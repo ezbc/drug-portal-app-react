@@ -34,7 +34,7 @@ module.exports = {
     open: true,
     host: "localhost",
     proxy: {
-      "/api": "http://localhost:8090"
+      "/api": "http://localhost:8080"
     }
   },
   plugins: [

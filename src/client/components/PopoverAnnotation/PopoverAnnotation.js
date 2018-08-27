@@ -18,7 +18,7 @@ const PopoverAnnotation = (props) => (
         title={props.title}
       />
       <CardContent>
-        Popover text
+        Identified entity: {props.entity}
       </CardContent>
     </Card>
   </div>

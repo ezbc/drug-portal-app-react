@@ -70,6 +70,7 @@ class AnnotatedText extends React.Component {
           <PopoverAnnotation
             title={label}
             key={this.props.key}
+            entity={text}
           >
             { annotationText }
           </PopoverAnnotation>
