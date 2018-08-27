@@ -1,8 +1,7 @@
 import React from 'react';
-import Header from './Header';
-import NavBar from './NavBar';
-import Input from './Input/Input';
-import Response from './Response/Response';
+import AppBar from '../AppBar/AppBar';
+import Input from '../Input/Input';
+import Response from '../Response/Response';
 import { withStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
@@ -50,6 +49,7 @@ const styles = (theme) => console.log(theme) || {
   }
 }
 
+// placeholdert text for input form
 const PLACEHOLDER_TEXT=`Beta-adrenergic agonist medicines may produce significant hypokalemia in some patients, possibly through intracellular shunting, which has the potential to produce adverse cardiovascular effects. The decrease in serum potassium is usually transient, not requiring supplementation. Beta-agonist medications may produce transient hyperglycemia in some patients. In clinical trials evaluating BREO ELLIPTA in subjects with COPD or asthma, there was no evidence of a treatment effect on serum glucose or potassium.`
 
 export default withStyles(styles)(
@@ -81,7 +81,7 @@ export default withStyles(styles)(
     render() {
       return (
         <MuiThemeProvider theme={theme}>
-          <NavBar/>
+          <AppBar/>
             <Input 
               value={this.state.text} 
               placeholder={PLACEHOLDER_TEXT}
