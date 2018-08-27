@@ -1,3 +1,7 @@
+.highlight {
+  cursor: pointer;
+  border: 1px dotted rgba(255,0,0,.5);
+}
 
 .highlight-adversereaction {
   background-color: rgba(255,0,255,.1);

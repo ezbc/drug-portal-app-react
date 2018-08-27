@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from './Header';
 import NavBar from './NavBar';
-import Input from './Input';
-import Response from './Response';
+import Input from './Input/Input';
+import Response from './Response/Response';
 import { withStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
@@ -50,41 +50,15 @@ const styles = (theme) => console.log(theme) || {
   }
 }
 
+const PLACEHOLDER_TEXT=`Beta-adrenergic agonist medicines may produce significant hypokalemia in some patients, possibly through intracellular shunting, which has the potential to produce adverse cardiovascular effects. The decrease in serum potassium is usually transient, not requiring supplementation. Beta-agonist medications may produce transient hyperglycemia in some patients. In clinical trials evaluating BREO ELLIPTA in subjects with COPD or asthma, there was no evidence of a treatment effect on serum glucose or potassium.`
+
 export default withStyles(styles)(
   class App extends React.Component {
 
     state = {
       text: '',
-      response: {
-        "annotations": [
-            {
-                "class": null,
-                "label": null,
-                "text": "Beta-adrenergic agonist medicines "
-            },
-            {
-                "class": "factor",
-                "label": "Factor",
-                "text": "may"
-            },
-            {
-                "class": null,
-                "label": null,
-                "text": " produce "
-            },
-            {
-                "class": "severity",
-                "label": "Severity",
-                "text": "significant"
-            },
-            {
-                "class": null,
-                "label": null,
-                "text": " "
-            }
-        ]
+      response: null
     }
-  }
 
     handleFormChange = ({target: {name, value}}) => {
       this.setState((prevState) => ({
@@ -95,10 +69,13 @@ export default withStyles(styles)(
     handleFormSubmit = (e) => {
       e.preventDefault()
 
+      // use text submitted from form else use the placeholder text
+      const text = this.state.text ? this.state.text : PLACEHOLDER_TEXT
+
       axios.post("/api/evalText", {
-          text: this.state.text
+          text
         })
-      .then(res => this.setState({ response: res.data.annotations[0].text }));
+      .then(res => this.setState({ response: res.data }));
     }
 
     render() {
@@ -107,13 +84,16 @@ export default withStyles(styles)(
           <NavBar/>
             <Input 
               value={this.state.text} 
+              placeholder={PLACEHOLDER_TEXT}
               handleFormChange={this.handleFormChange}
               handleFormSubmit={this.handleFormSubmit}
             />
-          <Response
-            annotations={this.state.response.annotations} 
-          >
-          </Response>
+          { this.state.response && 
+            <Response
+              annotations={this.state.response.annotations} 
+            >
+            </Response>
+          }
         </MuiThemeProvider>
       );
     }

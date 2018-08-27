@@ -6,8 +6,9 @@ import {
   Typography
 } from '@material-ui/core'
 import React from 'react';
-import AnnotatedText from './AnnotatedText/AnnotatedText';
-import PlainText from './PlainText/PlainText';
+import AnnotatedText from '../AnnotatedText/AnnotatedText';
+import PlainText from '../PlainText/PlainText';
+import './Response.css';
 
 function createBlocks(annotations) {
   return annotations.map(function(block, i) {
@@ -32,14 +33,18 @@ function createBlocks(annotations) {
 }
 
 const Response = (props) => (
-  <div>
-    { props.annotations && 
+  <div
+    className="response-card" 
+  >
+    { props && props.annotations && 
       <Card>
         <CardHeader
           title='Results'
         />
         <CardContent>
-          { createBlocks(props.annotations) }
+          { props.annotations &&
+            createBlocks(props.annotations)
+          }
         </CardContent>
       </Card>
     }

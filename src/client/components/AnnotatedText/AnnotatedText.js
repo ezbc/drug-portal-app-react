@@ -13,8 +13,6 @@ const styles = theme => ({
   },
 });
 
-
-
 class AnnotatedText extends React.Component {
   state = {
     anchorEl: null,
@@ -49,7 +47,7 @@ class AnnotatedText extends React.Component {
         <span
           onClick={this.handleClick}
           key={this.props.key}
-          className={"highlight-" + this.props.highlightName }
+          className={"highlight highlight-" + this.props.highlightName }
         >
           {text}
         </span>

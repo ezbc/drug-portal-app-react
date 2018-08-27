@@ -8,14 +8,19 @@ import {
   CardContent
 } from '@material-ui/core'
 
+import './Input.css';
+
 const InputField = (props) => (
-  <Card>
+  <Card
+    className="input-card" 
+  >
     <CardContent>
       <form onSubmit={props.handleFormSubmit}>
         <TextField
           name='title'
           label='Adverse Event Description'
           value={props.input}
+          placeholder={props.placeholder}
           onChange={props.handleFormChange}
           margin='normal' 
           multiline={true}
