@@ -7,8 +7,12 @@ import {
   Card,
   CardContent
 } from '@material-ui/core'
+//import { Button } from 'semantic-ui-react';
+import { withStyles } from '@material-ui/core/styles';
 
 import './Input.css';
+
+const styles = theme => {};
 
 const InputField = (props) => (
   <Card
@@ -40,4 +44,4 @@ const InputField = (props) => (
   </Card>
 );
 
-export default InputField
+export default withStyles(styles)(InputField);

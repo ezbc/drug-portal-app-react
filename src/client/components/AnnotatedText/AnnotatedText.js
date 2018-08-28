@@ -9,8 +9,11 @@ import './AnnotatedText.css';
 
 const styles = theme => ({
   typography: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing.unit * 2
   },
+  root: {
+    fontFamily: theme.typography.body,
+  }
 });
 
 class AnnotatedText extends React.Component {
@@ -43,7 +46,7 @@ class AnnotatedText extends React.Component {
     const { key } = this.props;
 
     return (
-      <span>
+      <span className={this.props.classes.root}>
         <span
           onClick={this.handleClick}
           key={this.props.key}

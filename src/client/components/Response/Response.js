@@ -10,6 +10,16 @@ import AnnotatedText from '../AnnotatedText/AnnotatedText';
 import PlainText from '../PlainText/PlainText';
 import './Response.css';
 
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: theme.typography,
+});
+
+/** Create annotated text spans with popover modals.
+ * 
+ * @param {object} annotations 
+ */
 function createBlocks(annotations) {
   return annotations.map(function(block, i) {
     if (block.label) {
@@ -32,9 +42,13 @@ function createBlocks(annotations) {
   })
 }
 
+/** Create response card.
+ * 
+ * @param {object} props 
+ */
 const Response = (props) => (
   <div
-    className="response-card" 
+    className={props.classes.root + ' response-card'}
   >
     { props && props.annotations && 
       <Card>
@@ -51,4 +65,4 @@ const Response = (props) => (
   </div>
 )
 
-export default Response;
+export default withStyles(styles)(Response);
