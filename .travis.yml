@@ -5,24 +5,27 @@ branches:
   - develop
 node_js:
 - 8
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
+  -in .travis/keys/client-secret-prod.json.enc -out secrets/client-secret-prod.json
+  -d
+- openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
+  -in .travis/keys/client-secret-dev.json.enc -out secrets/client-secret-dev.json
+  -d
+
 script:
 - npm run build
+
 deploy:
 - provider: gae
-  keyfile: secrets/drug-portal
+  keyfile: secrets/client-secret-dev.json
   project: dev-drug-portal
   on:
     branch: develop
+
 - provider: gae
-  token:
-    secure: 
+  keyfile: secrets/client-secret-prod.json
   project: drug-portal
   on:
     branch: master
-before_install:
-- openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
-  -in drug-portal-3c8f39d05c26.json.enc -out secrets/drug-portal-3c8f39d05c26.json
-  -d
-- openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
-  -in dev-drug-portal-8cf72115dca1.json.enc -out secrets/dev-drug-portal-8cf72115dca1.json
-  -d
