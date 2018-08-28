@@ -81,7 +81,7 @@ export default withStyles(styles)(
     render() {
       return (
         <MuiThemeProvider theme={theme}>
-          <AppBar/>
+          <AppBar styles={styles}/>
             <Input 
               value={this.state.text} 
               placeholder={PLACEHOLDER_TEXT}
