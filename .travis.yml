@@ -8,10 +8,10 @@ node_js:
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
-  -in .travis/keys/client-secret-prod.json.enc -out secrets/client-secret-prod.json
+  -in .travis/keys/client-secret-prod.json.enc -out .travis/keys/client-secret-prod.json
   -d
 - openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
-  -in .travis/keys/client-secret-dev.json.enc -out secrets/client-secret-dev.json
+  -in .travis/keys/client-secret-dev.json.enc -out .travis/keys/client-secret-dev.json
   -d
 
 script:
@@ -19,13 +19,13 @@ script:
 
 deploy:
 - provider: gae
-  keyfile: secrets/client-secret-dev.json
+  keyfile: .travis/keys/client-secret-dev.json
   project: dev-drug-portal
   on:
     branch: develop
 
 - provider: gae
-  keyfile: secrets/client-secret-prod.json
+  keyfile: .travis/keys/client-secret-prod.json
   project: drug-portal
   on:
     branch: master
