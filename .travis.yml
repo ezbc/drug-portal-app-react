@@ -1,12 +1,28 @@
 language: node_js
-
-node_js:
-  - 8
-
-script:
-  - npm run build
-
 branches:
   only:
-  - gh-pages
-  - /.*/
+  - master
+  - develop
+node_js:
+- 8
+script:
+- npm run build
+deploy:
+- provider: gae
+  keyfile: secrets/drug-portal
+  project: dev-drug-portal
+  on:
+    branch: develop
+- provider: gae
+  token:
+    secure: 
+  project: drug-portal
+  on:
+    branch: master
+before_install:
+- openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
+  -in drug-portal-3c8f39d05c26.json.enc -out secrets/drug-portal-3c8f39d05c26.json
+  -d
+- openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
+  -in dev-drug-portal-8cf72115dca1.json.enc -out secrets/dev-drug-portal-8cf72115dca1.json
+  -d
