@@ -28,8 +28,6 @@ const NavBar = (props) => {
             <Typography variant="title" color="inherit" noWrap className={classes.toolbarTitle}>
             {props.title}
             </Typography>
-            <Button>Background</Button>
-            <Button>Home</Button>
         </Toolbar>
       </AppBar>
     </div>
