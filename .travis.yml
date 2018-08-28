@@ -15,7 +15,7 @@ before_install:
   -d
 
 script:
-- npm run build
+- yarn build
 
 deploy:
 - provider: gae
