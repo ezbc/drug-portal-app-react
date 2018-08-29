@@ -5,6 +5,7 @@ dist
 .env*
 
 # secret files
-.travis/keys/*
+*secret*
+
 # whitelist encrypted keys
-!.travis/keys/*.enc
+!*secret*.enc
