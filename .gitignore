@@ -3,6 +3,8 @@ node_modules
 dist
 *.log
 .env*
-secrets
-.travis/keys/*json
 
+# secret files
+.travis/keys/*
+# whitelist encrypted keys
+!.travis/keys/*.enc
