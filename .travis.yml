@@ -9,12 +9,12 @@ script:
 - yarn build
 deploy:
 - provider: gae
-  keyfile: ".travis/keys/client-secret-dev.json"
+  keyfile: "client-secret-dev.json"
   project: dev-drug-portal
   on:
     branch: develop
 - provider: gae
-  keyfile: ".travis/keys/client-secret-prod.json"
+  keyfile: "client-secret-prod.json"
   project: drug-portal
   on:
     branch: master
