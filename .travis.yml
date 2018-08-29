@@ -11,11 +11,13 @@ deploy:
 - provider: gae
   keyfile: client-secret-dev.json
   project: dev-drug-portal
+  skip_cleanup: true
   on:
     branch: develop
 - provider: gae
   keyfile: client-secret-prod.json
   project: drug-portal
+  skip_cleanup: true
   on:
     branch: master
 before_install:
