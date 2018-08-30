@@ -24,4 +24,4 @@ deploy:
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
-  -in client-secret-dev.json.enc -out client-secret-dev.json -d
+  -in .travis/keys/client-secret-dev.json.enc -out client-secret-dev.json -d
