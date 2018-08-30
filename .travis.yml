@@ -22,6 +22,6 @@ deploy:
     branch: master
 before_install:
 - openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
-  -in .travis/keys/client-secret-prod.json.enc -out client-secret-prod.json -d
+  -in client-secret-prod.json.enc -out client-secret-prod.json -d
 - openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
-  -in .travis/keys/client-secret-dev.json.enc -out client-secret-dev.json -d
+  -in client-secret-dev.json.enc -out client-secret-dev.json -d
