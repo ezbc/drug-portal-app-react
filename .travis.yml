@@ -10,7 +10,7 @@ script:
 - yarn build
 deploy:
 - provider: gae
-  keyfile: /tmp/client-secret-dev.json
+  keyfile: client-secret-dev.json
   project: dev-drug-portal
   skip_cleanup: true
   on:
@@ -23,5 +23,5 @@ deploy:
     branch: master
 
 before_install:
-  - echo $CLIENT_SECRET_DEV > /tmp/client-secret-dev.json
-  - ls /tmp/client-secret-dev.json
+- openssl aes-256-cbc -K $encrypted_d38d7a19446e_key -iv $encrypted_d38d7a19446e_iv
+  -in client-secret-dev.json.enc -out client-secret-dev.json -d
