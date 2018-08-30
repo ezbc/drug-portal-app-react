@@ -3,17 +3,18 @@ branches:
   only:
   - master
   - develop
+  - feature/travis-ci
 node_js:
 - 8
 script:
 - yarn build
 deploy:
 - provider: gae
-  keyfile: .travis/keys/client-secret-dev.json
+  keyfile: /tmp/client-secret-dev.json
   project: dev-drug-portal
   skip_cleanup: true
   on:
-    branch: develop
+    branch: feature/travis-ci
 - provider: gae
   keyfile: client-secret-prod.json
   project: drug-portal
@@ -22,4 +23,5 @@ deploy:
     branch: master
 
 before_install:
-  - echo $CLIENT_SECRET_DEV > .travis/keys/client-secret-dev.json
+  - echo $CLIENT_SECRET_DEV > /tmp/client-secret-dev.json
+  - ls /tmp/client-secret-dev.json
